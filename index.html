@@ -1,222 +1,112 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="NEXORA Content Studio - Premium AI content for e-commerce brands.">
-<title>NEXORA — Create. Capture. Convert.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXORA — AI Content Studio</title>
 <style>
-:root{--bg:#080d19;--panel:#101a2b;--blue:#648cff;--white:#f7f9ff;--muted:#a5afc2}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:var(--bg);color:var(--white);line-height:1.6}
-a{text-decoration:none;color:inherit}
-.container{width:min(1100px,90%);margin:auto}
-header{position:sticky;top:0;z-index:10;background:#080d19ed;border-bottom:1px solid #ffffff18;backdrop-filter:blur(12px)}
-nav{min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.logo{font-size:23px;font-weight:900;letter-spacing:2px}
-.logo span{color:var(--blue)}
-.navlinks{display:flex;gap:22px;font-size:14px;color:var(--muted)}
-.navlinks a:hover{color:white}
-.lang{background:var(--panel);border:1px solid #ffffff25;color:white;padding:9px;border-radius:8px}
-.hero{padding:105px 0 90px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#3156a044,transparent 65%)}
-.tag{display:inline-block;color:#a9bcff;border:1px solid #648cff66;background:#648cff14;padding:7px 14px;border-radius:30px;font-size:12px;letter-spacing:2px}
-h1{font-size:clamp(42px,8vw,76px);line-height:1.08;margin:25px 0}
-h1 span{color:var(--blue)}
-.hero p{color:var(--muted);max-width:650px;margin:0 auto 30px;font-size:18px}
-.btn{display:inline-block;background:var(--blue);color:white;padding:14px 24px;border-radius:9px;font-weight:bold;margin:5px}
-.btn.secondary{background:transparent;border:1px solid #ffffff40}
-section{padding:75px 0}
-.section-title{text-align:center;font-size:34px;margin-bottom:12px}
-.section-sub{text-align:center;color:var(--muted);margin-bottom:38px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:var(--panel);border:1px solid #ffffff15;border-radius:15px;padding:25px}
-.card h3{margin:12px 0 8px}
-.card p,.card li{color:var(--muted);font-size:14px}
-.icon{font-size:30px}
-.portfolio{background:#0c1423}
-.work{height:190px;border-radius:12px;background:linear-gradient(135deg,#243d70,#111b30);display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:bold;color:#dce6ff;margin-bottom:15px}
-.price{font-size:30px;font-weight:900;color:#9db4ff;margin:15px 0}
-.card ul{padding-left:18px;margin:15px 0}
-.featured{border-color:var(--blue);box-shadow:0 0 30px #648cff20}
-.about{text-align:center;max-width:750px;margin:auto;color:var(--muted)}
-.contact{text-align:center;background:linear-gradient(180deg,#0c1423,#101d36)}
-footer{padding:25px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid #ffffff15}
-@media(max-width:700px){
- .navlinks{display:none}
- .grid{grid-template-columns:1fr}
- .hero{padding:75px 0}
- section{padding:55px 0}
-}
+*{box-sizing:border-box}
+body{margin:0;background:#080d19;color:#f5f6ff;font-family:Arial,sans-serif}
+header{padding:22px 6%;border-bottom:1px solid #283044;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:27px;font-weight:bold;letter-spacing:3px}
+.logo span{color:#718cff}
+select,input,textarea{width:100%;padding:15px;margin:8px 0 17px;background:#111a2b;border:1px solid #39445c;border-radius:10px;color:white;font-size:16px}
+main{max-width:750px;margin:55px auto;padding:20px}
+h1{font-size:36px;text-align:center}
+.sub{text-align:center;color:#aab2c5;line-height:1.8;margin-bottom:35px}
+.card{background:#101a2b;border:1px solid #303b53;padding:25px;border-radius:18px}
+label{font-weight:bold}
+button{background:#718cff;color:white;border:0;padding:16px;border-radius:11px;font-size:17px;font-weight:bold;width:100%;cursor:pointer;margin-top:10px}
+button.secondary{background:#26334e}
+#result{display:none;white-space:pre-wrap;line-height:1.9;background:#080d19;padding:20px;border-radius:12px;margin-top:20px;overflow-wrap:anywhere}
+footer{text-align:center;color:#8993a9;padding:35px}
 </style>
 </head>
 <body>
 <header>
- <div class="container">
-  <nav>
-   <a class="logo" href="#">NEXORA<span>.</span></a>
-   <div class="navlinks">
-    <a href="#services" data-i="services">Services</a>
-    <a href="#portfolio" data-i="portfolio">Portfolio</a>
-    <a href="#pricing" data-i="pricing">Pricing</a>
-    <a href="#about" data-i="about">About</a>
-    <a href="#contact" data-i="contact">Contact</a>
-   </div>
-   <select class="lang" id="language" aria-label="Language">
-    <option value="en">EN</option>
-    <option value="fr">FR</option>
-    <option value="ar">AR</option>
-   </select>
-  </nav>
- </div>
+<div class="logo">NEXORA<span>.</span></div>
+<select id="lang" style="width:115px;margin:0" onchange="changeLang()">
+<option value="ar">العربية</option>
+<option value="fr">Français</option>
+<option value="en">English</option>
+</select>
 </header>
 
 <main>
-<section class="hero">
- <div class="container">
-  <span class="tag" data-i="tag">AI-POWERED CREATIVE STUDIO</span>
-  <h1 data-i="headline">Your Products.<br><span>Our Creativity.</span></h1>
-  <p data-i="intro">We create premium AI-powered images and videos that help e-commerce brands present their products with impact.</p>
-  <a class="btn" href="#contact" data-i="cta">Start Your Project →</a>
-  <a class="btn secondary" href="#portfolio" data-i="view">Explore Our Work</a>
- </div>
-</section>
+<h1 id="title">اصنع إعلانك الاحترافي</h1>
+<p class="sub" id="desc">حوّل منتجاتك إلى إعلانات جذابة تساعدك على زيادة المبيعات.</p>
 
-<section id="services">
- <div class="container">
-  <h2 class="section-title" data-i="servicesTitle">What We Create</h2>
-  <p class="section-sub" data-i="servicesSub">Creative content designed for modern e-commerce.</p>
-  <div class="grid">
-   <article class="card"><div class="icon">📸</div><h3 data-i="s1">AI Product Photography</h3><p data-i="sd1">Professional product visuals, premium backgrounds and creative scenes.</p></article>
-   <article class="card"><div class="icon">🎬</div><h3 data-i="s2">AI Video Ads</h3><p data-i="sd2">Engaging short-form videos for advertising and social media.</p></article>
-   <article class="card"><div class="icon">✨</div><h3 data-i="s3">Social Media Content</h3><p data-i="sd3">Creative posts, visual campaigns and content for your brand.</p></article>
-   <article class="card"><div class="icon">✍️</div><h3 data-i="s4">Ad Copywriting</h3><p data-i="sd4">Persuasive product descriptions, hooks and advertising scripts.</p></article>
-   <article class="card"><div class="icon">🎙️</div><h3 data-i="s5">UGC-Style Videos</h3><p data-i="sd5">Authentic-feeling promotional concepts and product demonstrations.</p></article>
-   <article class="card"><div class="icon">🚀</div><h3 data-i="s6">Creative Strategy</h3><p data-i="sd6">Ideas and creative direction tailored to your audience and product.</p></article>
-  </div>
- </div>
-</section>
+<div class="card">
+<label id="l1">اسم المنتج</label>
+<input id="product" placeholder="مثال: كريم العناية بالبشرة">
 
-<section class="portfolio" id="portfolio">
- <div class="container">
-  <h2 class="section-title" data-i="portfolioTitle">Creative Showcase</h2>
-  <p class="section-sub" data-i="portfolioSub">A preview of the creative direction we can build for your brand.</p>
-  <div class="grid">
-   <div class="card"><div class="work">PRODUCT</div><h3 data-i="p1">Product Photography</h3><p data-i="pd1">Premium visual concepts.</p></div>
-   <div class="card"><div class="work">VIDEO ADS</div><h3 data-i="p2">Video Advertising</h3><p data-i="pd2">Short-form advertising concepts.</p></div>
-   <div class="card"><div class="work">BRANDING</div><h3 data-i="p3">Brand Visuals</h3><p data-i="pd3">Consistent creative identity.</p></div>
-  </div>
-  <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:18px" data-i="demo">Concept previews — replace with real client projects as your portfolio grows.</p>
- </div>
-</section>
+<label id="l2">السعر</label>
+<input id="price" placeholder="مثال: 39 دينار">
 
-<section id="pricing">
- <div class="container">
-  <h2 class="section-title" data-i="pricingTitle">Simple Packages</h2>
-  <p class="section-sub" data-i="pricingSub">Starting packages. Custom quotes are available.</p>
-  <div class="grid">
-   <div class="card"><h3>STARTER</h3><div class="price">250 TND</div><ul><li data-i="a1">8 AI product images</li><li data-i="a2">4 short videos</li><li data-i="a3">1 revision round</li></ul><a class="btn" href="#contact" data-i="choose">Choose Plan</a></div>
-   <div class="card featured"><h3>BUSINESS</h3><div class="price">450 TND</div><ul><li data-i="b1">12 AI product images</li><li data-i="b2">8 short videos</li><li data-i="b3">2 revision rounds</li></ul><a class="btn" href="#contact" data-i="choose">Choose Plan</a></div>
-   <div class="card"><h3>PREMIUM</h3><div class="price">700 TND</div><ul><li data-i="c1">20 AI product images</li><li data-i="c2">12 short videos</li><li data-i="c3">Creative direction</li></ul><a class="btn" href="#contact" data-i="choose">Choose Plan</a></div>
-  </div>
-  <p class="section-sub" style="margin:25px 0 0" data-i="note">Indicative launch prices. Final quote depends on project scope.</p>
- </div>
-</section>
+<label id="l3">مميزات المنتج</label>
+<textarea id="features" rows="3" placeholder="اكتب أهم مميزات منتجك"></textarea>
 
-<section id="about">
- <div class="container">
-  <h2 class="section-title" data-i="aboutTitle">The NEXORA Approach</h2>
-  <p class="about" data-i="aboutText">We combine creative thinking and AI-powered production to help e-commerce businesses create high-quality content. Our focus is simple: make your products look their best and help your brand stand out.</p>
- </div>
-</section>
+<label id="l4">الجمهور المستهدف</label>
+<input id="audience" placeholder="مثال: النساء من 20 إلى 40 سنة">
 
-<section class="contact" id="contact">
- <div class="container">
-  <h2 class="section-title" data-i="contactTitle">Ready to Create?</h2>
-  <p class="section-sub" data-i="contactText">Tell us about your product and let's build something great.</p>
-  <a class="btn" id="whatsapp" href="https://wa.me/216XXXXXXXX" target="_blank" rel="noopener" data-i="whatsapp">Contact us on WhatsApp</a>
-  <p style="color:var(--muted);font-size:12px;margin-top:14px" data-i="replace">Replace the WhatsApp number in the website code with your own number.</p>
- </div>
-</section>
+<label id="l5">منصة الإعلان</label>
+<select id="platform">
+<option>Facebook</option>
+<option>Instagram</option>
+<option>TikTok</option>
+</select>
+
+<label id="l6">أسلوب الإعلان</label>
+<select id="style">
+<option value="strong">إقناعي وتسويقي</option>
+<option value="friendly">ودّي وبسيط</option>
+<option value="premium">فاخر واحترافي</option>
+</select>
+
+<button onclick="generate()" id="generate">✨ أنشئ الإعلان</button>
+
+<div id="result"></div>
+<button class="secondary" id="copy" onclick="copyText()" style="display:none">نسخ الإعلان</button>
+</div>
 </main>
-<footer>© 2026 NEXORA CONTENT STUDIO · Create. Capture. Convert.</footer>
+
+<footer>© 2026 NEXORA CONTENT STUDIO</footer>
 
 <script>
 const translations={
-en:{
-services:"Services",portfolio:"Portfolio",pricing:"Pricing",about:"About",contact:"Contact",
-tag:"AI-POWERED CREATIVE STUDIO",headline:'Your Products.<br><span>Our Creativity.</span>',
-intro:"We create premium AI-powered images and videos that help e-commerce brands present their products with impact.",
-cta:"Start Your Project →",view:"Explore Our Work",servicesTitle:"What We Create",
-servicesSub:"Creative content designed for modern e-commerce.",
-s1:"AI Product Photography",sd1:"Professional product visuals, premium backgrounds and creative scenes.",
-s2:"AI Video Ads",sd2:"Engaging short-form videos for advertising and social media.",
-s3:"Social Media Content",sd3:"Creative posts, visual campaigns and content for your brand.",
-s4:"Ad Copywriting",sd4:"Persuasive product descriptions, hooks and advertising scripts.",
-s5:"UGC-Style Videos",sd5:"Authentic-feeling promotional concepts and product demonstrations.",
-s6:"Creative Strategy",sd6:"Ideas and creative direction tailored to your audience and product.",
-portfolioTitle:"Creative Showcase",portfolioSub:"A preview of the creative direction we can build for your brand.",
-p1:"Product Photography",pd1:"Premium visual concepts.",p2:"Video Advertising",pd2:"Short-form advertising concepts.",p3:"Brand Visuals",pd3:"Consistent creative identity.",
-demo:"Concept previews — replace with real client projects as your portfolio grows.",
-pricingTitle:"Simple Packages",pricingSub:"Starting packages. Custom quotes are available.",
-a1:"8 AI product images",a2:"4 short videos",a3:"1 revision round",b1:"12 AI product images",b2:"8 short videos",b3:"2 revision rounds",c1:"20 AI product images",c2:"12 short videos",c3:"Creative direction",choose:"Choose Plan",note:"Indicative launch prices. Final quote depends on project scope.",
-aboutTitle:"The NEXORA Approach",aboutText:"We combine creative thinking and AI-powered production to help e-commerce businesses create high-quality content. Our focus is simple: make your products look their best and help your brand stand out.",
-contactTitle:"Ready to Create?",contactText:"Tell us about your product and let's build something great.",whatsapp:"Contact us on WhatsApp",replace:"Replace the WhatsApp number in the website code with your own number."
-},
-fr:{
-services:"Services",portfolio:"Portfolio",pricing:"Tarifs",about:"À propos",contact:"Contact",
-tag:"STUDIO CRÉATIF PROPULSÉ PAR L'IA",headline:'Vos produits.<br><span>Notre créativité.</span>',
-intro:"Nous créons des images et vidéos premium grâce à l'IA pour valoriser les produits des marques e-commerce.",
-cta:"Démarrer un projet →",view:"Voir nos créations",servicesTitle:"Nos services",
-servicesSub:"Du contenu créatif pour le e-commerce moderne.",
-s1:"Photographie produit IA",sd1:"Visuels professionnels, arrière-plans premium et mises en scène créatives.",
-s2:"Publicités vidéo IA",sd2:"Vidéos courtes pour la publicité et les réseaux sociaux.",
-s3:"Contenu réseaux sociaux",sd3:"Publications et campagnes visuelles pour votre marque.",
-s4:"Rédaction publicitaire",sd4:"Descriptions produits, accroches et scripts publicitaires.",
-s5:"Vidéos style UGC",sd5:"Concepts promotionnels et démonstrations de produits.",
-s6:"Stratégie créative",sd6:"Des idées adaptées à votre produit et votre audience.",
-portfolioTitle:"Nos concepts créatifs",portfolioSub:"Un aperçu de la direction créative possible pour votre marque.",
-p1:"Photographie produit",pd1:"Concepts visuels premium.",p2:"Publicité vidéo",pd2:"Concepts publicitaires courts.",p3:"Identité visuelle",pd3:"Une identité créative cohérente.",
-demo:"Aperçus conceptuels — remplacez-les par vos vrais projets au fil du temps.",
-pricingTitle:"Nos forfaits",pricingSub:"Forfaits de départ. Devis personnalisés disponibles.",
-a1:"8 images produit IA",a2:"4 vidéos courtes",a3:"1 série de corrections",b1:"12 images produit IA",b2:"8 vidéos courtes",b3:"2 séries de corrections",c1:"20 images produit IA",c2:"12 vidéos courtes",c3:"Direction créative",choose:"Choisir",note:"Prix de lancement indicatifs. Le devis final dépend du projet.",
-aboutTitle:"L'approche NEXORA",aboutText:"Nous combinons créativité et production assistée par l'IA pour aider les entreprises e-commerce à créer du contenu de qualité. Notre objectif : valoriser vos produits et faire ressortir votre marque.",
-contactTitle:"Prêt à créer ?",contactText:"Parlez-nous de votre produit et créons quelque chose d'exceptionnel.",
-whatsapp:"Contactez-nous sur WhatsApp",replace:"Remplacez le numéro WhatsApp dans le code par votre propre numéro."
-},
-ar:{
-services:"خدماتنا",portfolio:"أعمالنا",pricing:"الأسعار",about:"من نحن",contact:"اتصل بنا",
-tag:"استوديو إبداعي بالذكاء الاصطناعي",headline:'منتجاتك.<br><span>إبداعنا.</span>',
-intro:"نصنع صورًا وفيديوهات احترافية بالذكاء الاصطناعي لمساعدة متاجر التجارة الإلكترونية على إبراز منتجاتها.",
-cta:"ابدأ مشروعك ←",view:"اكتشف أعمالنا",servicesTitle:"ماذا نقدم؟",
-servicesSub:"محتوى إبداعي مصمم للتجارة الإلكترونية الحديثة.",
-s1:"تصوير المنتجات بالذكاء الاصطناعي",sd1:"صور احترافية وخلفيات راقية ومشاهد إبداعية لمنتجاتك.",
-s2:"إعلانات الفيديو بالذكاء الاصطناعي",sd2:"فيديوهات قصيرة وجذابة للإعلانات ومواقع التواصل.",
-s3:"محتوى مواقع التواصل",sd3:"منشورات وحملات بصرية خاصة بعلامتك التجارية.",
-s4:"كتابة الإعلانات",sd4:"وصف المنتجات وعبارات جذابة وسيناريوهات إعلانية.",
-s5:"فيديوهات بأسلوب UGC",sd5:"أفكار ترويجية وعروض للمنتجات بأسلوب طبيعي.",
-s6:"الاستراتيجية الإبداعية",sd6:"أفكار وتوجيه إبداعي يناسب منتجك وجمهورك.",
-portfolioTitle:"نماذج إبداعية",portfolioSub:"أمثلة توضيحية للأسلوب الإبداعي الذي يمكن تقديمه لعلامتك.",
-p1:"تصوير المنتجات",pd1:"أفكار بصرية راقية.",p2:"إعلانات الفيديو",pd2:"أفكار إعلانية قصيرة.",p3:"هوية العلامة",pd3:"هوية بصرية متناسقة.",
-demo:"هذه نماذج تصورية — عوّضها بأعمال حقيقية مع تطور معرض أعمالك.",
-pricingTitle:"باقاتنا",pricingSub:"باقات انطلاق مع إمكانية إعداد عرض خاص.",
-a1:"8 صور منتجات بالذكاء الاصطناعي",a2:"4 فيديوهات قصيرة",a3:"جولة تعديل واحدة",b1:"12 صورة منتجات",b2:"8 فيديوهات قصيرة",b3:"جولتا تعديل",c1:"20 صورة منتجات",c2:"12 فيديو قصير",c3:"توجيه إبداعي",choose:"اختر الباقة",note:"أسعار انطلاق مقترحة. السعر النهائي حسب تفاصيل المشروع.",
-aboutTitle:"فلسفة NEXORA",aboutText:"نجمع بين الإبداع وتقنيات الذكاء الاصطناعي لمساعدة متاجر التجارة الإلكترونية على إنتاج محتوى عالي الجودة. هدفنا إبراز منتجاتك ومساعدة علامتك التجارية على التميز.",
-contactTitle:"جاهز للانطلاق؟",contactText:"احكيلنا على منتجك ونبنيو مع بعضنا محتوى مميز.",
-whatsapp:"تواصل معنا عبر واتساب",replace:"عوّض رقم واتساب في الكود برقمك الخاص."
-}};
-function setLanguage(lang){
- const t=translations[lang];
- document.querySelectorAll("[data-i]").forEach(el=>{
- const key=el.dataset.i;
- if(t[key]) el.innerHTML=t[key];
- });
- document.documentElement.lang=lang;
- document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ar:["اصنع إعلانك الاحترافي","حوّل منتجاتك إلى إعلانات جذابة تساعدك على زيادة المبيعات.","اسم المنتج","السعر","مميزات المنتج","الجمهور المستهدف","منصة الإعلان","أسلوب الإعلان","✨ أنشئ الإعلان","نسخ الإعلان","اكتب اسم المنتج ومميزاته أولاً","اكتشفوا {p}! ✨\n\n{f}\n\nاطلبوه الآن بسعر {price}.\n\nلا تفوّتوا الفرصة! 🔥\n\n#تسوق #منتجات"],
+fr:["Créez votre publicité","Transformez vos produits en publicités attractives.","Nom du produit","Prix","Avantages du produit","Public cible","Plateforme","Style publicitaire","✨ Créer la publicité","Copier la publicité","Entrez le nom et les avantages du produit","Découvrez {p} ! ✨\n\n{f}\n\nCommandez maintenant au prix de {price}.\n\nNe manquez pas cette occasion ! 🔥"],
+en:["Create your professional ad","Turn your products into attractive marketing content.","Product name","Price","Product benefits","Target audience","Ad platform","Ad style","✨ Generate Ad","Copy Ad","Enter the product name and benefits first","Discover {p}! ✨\n\n{f}\n\nOrder now for {price}.\n\nDon't miss this opportunity! 🔥"]
+};
+function changeLang(){
+let l=document.getElementById("lang").value,t=translations[l];
+document.documentElement.lang=l;
+document.documentElement.dir=l==="ar"?"rtl":"ltr";
+["title","desc","l1","l2","l3","l4","l5","l6","generate","copy"].forEach((id,i)=>document.getElementById(id).textContent=t[i]);
 }
-document.getElementById("language").addEventListener("change",e=>setLanguage(e.target.value));
-setLanguage("en");
+function generate(){
+let l=document.getElementById("lang").value,t=translations[l];
+let p=document.getElementById("product").value.trim();
+let price=document.getElementById("price").value.trim();
+let f=document.getElementById("features").value.trim();
+let audience=document.getElementById("audience").value.trim();
+if(!p||!f){alert(t[10]);return;}
+let style=document.getElementById("style").value;
+let intro=style==="premium"?"Découvrez l'excellence de":style==="friendly"?"On vous présente":"Ne manquez pas";
+let result=t[11].replace("{p}",p).replace("{f}",f).replace("{price}",price||"prix sur demande");
+if(l==="fr")result=result.replace("Découvrez "+p+" !",""+intro+" "+p+" !");
+if(l==="en")result=result.replace("Discover "+p+"!","Introducing "+p+"!");
+if(l==="ar"){
+result="✨ اكتشفوا "+p+"!\n\n"+f+"\n\n"+(audience?"موجّه إلى: "+audience+"\n\n":"")+"اطلبوه الآن "+(price?"بسعر "+price:"بسعر مميز")+".\n\nراسلونا للطلب والاستفسار 🔥";
+}
+document.getElementById("result").textContent=result+"\n\n"+document.getElementById("platform").value;
+document.getElementById("result").style.display="block";
+document.getElementById("copy").style.display="block";
+}
+function copyText(){
+navigator.clipboard.writeText(document.getElementById("result").textContent).then(()=>alert("Copied!"));
+}
 </script>
 </body>
 </html>
