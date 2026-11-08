@@ -4,86 +4,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NEXORA — AI Content Studio</title>
+<meta name="theme-color" content="#080d19">
+<title>NEXORA — AI Marketing Studio</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#080d19;color:#f5f6ff;font-family:Arial,sans-serif}
-header{padding:22px 6%;border-bottom:1px solid #283044;display:flex;justify-content:space-between;align-items:center}
+body{
+ margin:0;background:#080d19;color:#f5f6ff;
+ font-family:Arial,sans-serif;line-height:1.7
+}
+header{
+ padding:20px 6%;border-bottom:1px solid #283044;
+ display:flex;justify-content:space-between;align-items:center;
+ gap:15px
+}
 .logo{font-size:27px;font-weight:bold;letter-spacing:3px}
 .logo span{color:#718cff}
-select,input,textarea{width:100%;padding:15px;margin:8px 0 17px;background:#111a2b;border:1px solid #39445c;border-radius:10px;color:white;font-size:16px}
-main{max-width:750px;margin:55px auto;padding:20px}
-h1{font-size:36px;text-align:center}
-.sub{text-align:center;color:#aab2c5;line-height:1.8;margin-bottom:35px}
-.card{background:#101a2b;border:1px solid #303b53;padding:25px;border-radius:18px}
-label{font-weight:bold}
-.platforms{display:grid;gap:10px;margin:12px 0 22px}
-.platform-option{display:flex;align-items:center;gap:12px;padding:14px;background:#111a2b;border:1px solid #39445c;border-radius:10px;cursor:pointer}
-.platform-option input{width:20px;height:20px;margin:0;accent-color:#718cff}
-button{background:#718cff;color:white;border:0;padding:16px;border-radius:11px;font-size:17px;font-weight:bold;width:100%;cursor:pointer;margin-top:10px}
+select,input,textarea{
+ width:100%;padding:14px;margin:8px 0 17px;
+ background:#111a2b;border:1px solid #39445c;
+ border-radius:10px;color:white;font-size:16px
+}
+main{max-width:850px;margin:35px auto;padding:18px}
+h1{text-align:center;font-size:32px}
+.sub{text-align:center;color:#aab2c5;margin-bottom:30px}
+.card{
+ background:#101a2b;border:1px solid #303b53;
+ padding:24px;border-radius:18px;margin-bottom:20px
+}
+label{font-weight:bold;display:block}
+.platforms{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+ margin:12px 0 22px
+}
+.platform{
+ background:#17243a;border:1px solid #39445c;
+ border-radius:12px;padding:13px;text-align:center;
+ cursor:pointer
+}
+.platform input{width:auto;margin:0 5px 0 0}
+button{
+ background:#718cff;color:white;border:0;padding:15px;
+ border-radius:11px;font-size:16px;font-weight:bold;
+ width:100%;cursor:pointer;margin-top:10px
+}
 button.secondary{background:#26334e}
-#result{display:none;white-space:pre-wrap;line-height:1.9;background:#080d19;padding:20px;border-radius:12px;margin-top:20px;overflow-wrap:anywhere}
-footer{text-align:center;color:#8993a9;padding:35px}
-@media(max-width:600px){main{margin:20px auto}h1{font-size:29px}.card{padding:18px}}
+.result-card{
+ background:#080d19;border:1px solid #39445c;
+ padding:18px;border-radius:12px;margin-top:15px
+}
+.result-card h3{color:#91a6ff;margin-top:0}
+.result-text{white-space:pre-wrap;overflow-wrap:anywhere}
+.small-btn{padding:10px;font-size:14px}
+footer{text-align:center;color:#8993a9;padding:30px}
+.hidden{display:none}
+@media(max-width:500px){
+ h1{font-size:26px}
+ .platforms{grid-template-columns:1fr}
+ header{padding:15px}
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<div class="logo">NEXORA<span>.</span></div>
-<select id="lang" style="width:125px;margin:0" onchange="changeLang()">
-<option value="ar">العربية</option>
-<option value="fr">Français</option>
-<option value="en">English</option>
-</select>
+ <div class="logo">NEXORA<span>.</span></div>
+ <select id="lang" style="width:125px;margin:0"
+ onchange="changeLang()">
+  <option value="ar">العربية</option>
+  <option value="fr">Français</option>
+  <option value="en">English</option>
+ </select>
 </header>
 
 <main>
-<h1 id="title">اصنع إعلانك الاحترافي</h1>
-<p class="sub" id="desc">حوّل منتجاتك إلى إعلانات جذابة تساعدك على زيادة المبيعات.</p>
+
+<h1 id="title">NEXORA Marketing Studio</h1>
+<p class="sub" id="desc">
+أنشئ محتوى تسويقي احترافي لمنتجاتك في ثوانٍ.
+</p>
 
 <div class="card">
 
-<label id="l1">اسم المنتج</label>
-<input id="product" placeholder="مثال: منتجك">
+<label id="l1">اسم المنتج أو العلامة التجارية</label>
+<input id="product" placeholder="مثال: Talbina">
 
 <label id="l2">السعر</label>
-<input id="price" placeholder="مثال: 39 دينار">
+<input id="price" placeholder="مثال: 39 DT">
 
 <label id="l3">مميزات المنتج</label>
-<textarea id="features" rows="3" placeholder="اكتب أهم مميزات منتجك"></textarea>
+<textarea id="features" rows="4"
+placeholder="اكتب مميزات المنتج الحقيقية"></textarea>
 
 <label id="l4">الجمهور المستهدف</label>
-<input id="audience" placeholder="مثال: النساء من 20 إلى 40 سنة">
+<input id="audience" placeholder="مثال: المهتمون بالتغذية اليومية">
 
-<label id="l5">اختر منصات الإعلان</label>
+<label id="l5">المنصات الإعلانية (يمكن اختيار أكثر من واحدة)</label>
+
 <div class="platforms">
-<label class="platform-option">
-<input type="checkbox" name="platform" value="Facebook">
-<span>Facebook</span>
-</label>
-<label class="platform-option">
-<input type="checkbox" name="platform" value="Instagram">
-<span>Instagram</span>
-</label>
-<label class="platform-option">
-<input type="checkbox" name="platform" value="TikTok">
-<span>TikTok</span>
-</label>
+ <label class="platform">
+  <input type="checkbox" name="platform" value="Facebook">
+  Facebook
+ </label>
+
+ <label class="platform">
+  <input type="checkbox" name="platform" value="Instagram">
+  Instagram
+ </label>
+
+ <label class="platform">
+  <input type="checkbox" name="platform" value="TikTok">
+  TikTok
+ </label>
 </div>
 
 <label id="l6">أسلوب الإعلان</label>
 <select id="style">
-<option value="strong" id="s1">إقناعي وتسويقي</option>
-<option value="friendly" id="s2">ودّي وبسيط</option>
-<option value="premium" id="s3">فاخر واحترافي</option>
+ <option value="strong">إقناعي وتسويقي</option>
+ <option value="friendly">ودّي وبسيط</option>
+ <option value="premium">فاخر واحترافي</option>
 </select>
 
-<button onclick="generate()" id="generate">✨ أنشئ الإعلان</button>
+<label id="l7">نوع المحتوى</label>
+<select id="contentType">
+ <option value="sales">إعلان لزيادة المبيعات</option>
+ <option value="awareness">التعريف بالمنتج</option>
+ <option value="video">سكريبت فيديو Reels / TikTok</option>
+ <option value="launch">إطلاق منتج جديد</option>
+</select>
 
-<div id="result"></div>
+<button onclick="generate()" id="generate">
+✨ أنشئ المحتوى التسويقي
+</button>
 
-<button class="secondary" id="copy" onclick="copyText()" style="display:none">نسخ الإعلانات</button>
+<div id="results"></div>
+
+<button class="secondary hidden" id="copyAll"
+onclick="copyAll()">نسخ جميع النتائج</button>
 
 </div>
 </main>
@@ -91,184 +149,231 @@ footer{text-align:center;color:#8993a9;padding:35px}
 <footer>© 2026 NEXORA CONTENT STUDIO</footer>
 
 <script>
-const T={
+
+const translations={
 ar:{
-title:"اصنع إعلانك الاحترافي",
-desc:"حوّل منتجاتك إلى إعلانات جذابة تساعدك على زيادة المبيعات.",
-labels:["اسم المنتج","السعر","مميزات المنتج","الجمهور المستهدف","اختر منصات الإعلان","أسلوب الإعلان"],
-generate:"✨ أنشئ الإعلان",copy:"نسخ الإعلانات",
-placeholder:["مثال: منتجك","مثال: 39 دينار","اكتب أهم مميزات منتجك","مثال: النساء من 20 إلى 40 سنة"],
-styles:["إقناعي وتسويقي","ودّي وبسيط","فاخر واحترافي"],
-missing:"يرجى إدخال اسم المنتج ومميزاته.",
-platform:"يرجى اختيار منصة واحدة على الأقل.",
-audience:"الجمهور المستهدف",
-price:"السعر",
-discover:"اكتشفوا",
-order:"اطلبوا الآن",
-contact:"راسلونا للطلب والاستفسار",
-success:"تم نسخ الإعلان بنجاح!",
-error:"تعذّر النسخ. حاول مرة أخرى.",
-tone:["لا تفوّتوا هذه الفرصة!","منتج يستحق التجربة!","اختيار مميز لمن يبحث عن الجودة."]
+title:"NEXORA Marketing Studio",
+desc:"أنشئ محتوى تسويقي احترافي لمنتجاتك في ثوانٍ.",
+labels:["اسم المنتج أو العلامة التجارية","السعر",
+"مميزات المنتج","الجمهور المستهدف","المنصات الإعلانية",
+"أسلوب الإعلان","نوع المحتوى"],
+generate:"✨ أنشئ المحتوى التسويقي",
+copy:"نسخ",
+copyAll:"نسخ جميع النتائج",
+error:"يرجى إدخال اسم المنتج ومميزاته واختيار منصة واحدة على الأقل.",
+price:"السعر عند الطلب",
+hook:"🔥 هل تبحث عن منتج يستحق التجربة؟",
+intro:"اكتشفوا",
+cta:"راسلونا الآن للاستفسار والطلب.",
+script:"سكريبت الفيديو",
+caption:"الكابشن الإعلاني",
+hashtags:"الهاشتاغات",
+audience:"الجمهور المستهدف"
 },
 fr:{
-title:"Créez votre publicité professionnelle",
-desc:"Transformez vos produits en contenus marketing attractifs.",
-labels:["Nom du produit","Prix","Avantages du produit","Public cible","Choisissez les plateformes","Style publicitaire"],
-generate:"✨ Créer la publicité",copy:"Copier les publicités",
-placeholder:["Exemple : votre produit","Exemple : 39 DT","Les principaux avantages","Exemple : Femmes de 20 à 40 ans"],
-styles:["Persuasif et commercial","Amical et simple","Premium et élégant"],
-missing:"Veuillez saisir le nom et les avantages du produit.",
-platform:"Veuillez choisir au moins une plateforme.",
-audience:"Public cible",
-price:"Prix",
-discover:"Découvrez",
-order:"Commandez maintenant",
-contact:"Contactez-nous pour commander",
-success:"Publicité copiée avec succès !",
-error:"Copie impossible. Réessayez.",
-tone:["Ne manquez pas cette occasion !","Un produit qui mérite d'être découvert !","Un choix élégant pour les amateurs de qualité."]
+title:"NEXORA Marketing Studio",
+desc:"Créez du contenu marketing professionnel en quelques secondes.",
+labels:["Nom du produit ou marque","Prix","Avantages du produit",
+"Public cible","Plateformes publicitaires","Style publicitaire","Type de contenu"],
+generate:"✨ Générer le contenu",
+copy:"Copier",
+copyAll:"Tout copier",
+error:"Veuillez saisir le produit, ses avantages et choisir une plateforme.",
+price:"Prix sur demande",
+hook:"🔥 Découvrez un produit qui mérite votre attention !",
+intro:"Découvrez",
+cta:"Contactez-nous pour commander.",
+script:"Script vidéo",
+caption:"Légende publicitaire",
+hashtags:"Hashtags",
+audience:"Public cible"
 },
 en:{
-title:"Create your professional ad",
-desc:"Turn your products into attractive marketing content.",
-labels:["Product name","Price","Product benefits","Target audience","Choose advertising platforms","Ad style"],
-generate:"✨ Generate Ad",copy:"Copy ads",
-placeholder:["Example: Your product","Example: 39 TND","Enter the main benefits","Example: Women aged 20 to 40"],
-styles:["Persuasive and commercial","Friendly and simple","Premium and elegant"],
-missing:"Please enter the product name and benefits.",
-platform:"Please select at least one platform.",
-audience:"Target audience",
-price:"Price",
-discover:"Discover",
-order:"Order now",
-contact:"Contact us to order",
-success:"Ad copied successfully!",
-error:"Copy failed. Please try again.",
-tone:["Don't miss this opportunity!","A product worth discovering!","A refined choice for quality seekers."]
+title:"NEXORA Marketing Studio",
+desc:"Create professional marketing content in seconds.",
+labels:["Product or brand name","Price","Product benefits",
+"Target audience","Advertising platforms","Ad style","Content type"],
+generate:"✨ Generate content",
+copy:"Copy",
+copyAll:"Copy all results",
+error:"Enter the product, its benefits and select at least one platform.",
+price:"Price on request",
+hook:"🔥 Discover a product worth exploring!",
+intro:"Discover",
+cta:"Contact us to order.",
+script:"Video script",
+caption:"Advertising caption",
+hashtags:"Hashtags",
+audience:"Target audience"
 }
 };
 
 function changeLang(){
-const l=document.getElementById("lang").value;
-const t=T[l];
-document.documentElement.lang=l;
-document.documentElement.dir=l==="ar"?"rtl":"ltr";
-document.getElementById("title").textContent=t.title;
-document.getElementById("desc").textContent=t.desc;
-["l1","l2","l3","l4","l5","l6"].forEach((id,i)=>document.getElementById(id).textContent=t.labels[i]);
-["s1","s2","s3"].forEach((id,i)=>document.getElementById(id).textContent=t.styles[i]);
-document.getElementById("generate").textContent=t.generate;
-document.getElementById("copy").textContent=t.copy;
-["product","price","features","audience"].forEach((id,i)=>document.getElementById(id).placeholder=t.placeholder[i]);
+ const l=document.getElementById("lang").value;
+ const t=translations[l];
+ document.documentElement.lang=l;
+ document.documentElement.dir=l==="ar"?"rtl":"ltr";
+ document.getElementById("title").textContent=t.title;
+ document.getElementById("desc").textContent=t.desc;
+
+ ["l1","l2","l3","l4","l5","l6","l7"].forEach((id,i)=>{
+  document.getElementById(id).textContent=t.labels[i];
+ });
+
+ document.getElementById("generate").textContent=t.generate;
+ document.getElementById("copyAll").textContent=t.copyAll;
 }
 
 function generate(){
-const l=document.getElementById("lang").value;
-const t=T[l];
-const p=document.getElementById("product").value.trim();
-const price=document.getElementById("price").value.trim();
-const f=document.getElementById("features").value.trim();
-const audience=document.getElementById("audience").value.trim();
-const style=document.getElementById("style").value;
 
-const platforms=[...document.querySelectorAll('input[name="platform"]:checked')].map(x=>x.value);
+ const l=document.getElementById("lang").value;
+ const t=translations[l];
 
-if(!p||!f){alert(t.missing);return;}
-if(platforms.length===0){alert(t.platform);return;}
+ const p=document.getElementById("product").value.trim();
+ const price=document.getElementById("price").value.trim();
+ const f=document.getElementById("features").value.trim();
+ const audience=document.getElementById("audience").value.trim();
 
-const toneIndex={strong:0,friendly:1,premium:2};
-const tone=t.tone[toneIndex[style]];
+ const platforms=[...document.querySelectorAll(
+ 'input[name="platform"]:checked'
+ )].map(x=>x.value);
 
-function makeAd(platform){
-let headline="";
-let content="";
+ if(!p||!f||platforms.length===0){
+  alert(t.error);
+  return;
+ }
 
-if(l==="ar"){
-headline=t.discover+" "+p;
-content="✨ "+headline+"\n\n"+f;
-if(audience)content+="\n\n"+t.audience+": "+audience;
-if(price)content+="\n\n"+t.price+": "+price;
+ const style=document.getElementById("style").value;
+ const type=document.getElementById("contentType").value;
+ const results=document.getElementById("results");
 
-if(platform==="Facebook"){
-content+="\n\n"+tone+"\n\n"+t.order+"\n\n"+t.contact+" 🔥";
-}
-if(platform==="Instagram"){
-content+="\n\n"+tone+"\n\n"+t.contact+" ✨\n\n#تسوق #منتجات #جودة";
-}
-if(platform==="TikTok"){
-content="👀 "+headline+"\n\n"+f+(audience?"\n\n"+t.audience+": "+audience:"")+(price?"\n\n"+t.price+": "+price:"")+"\n\n"+tone+"\n\n"+t.order+" 🔥";
-}
+ results.innerHTML="";
+
+ platforms.forEach(platform=>{
+
+  let hook=t.hook;
+
+  if(l==="ar"){
+   if(style==="premium") hook="✨ اكتشفوا تجربة مميزة مع "+p;
+   if(style==="friendly") hook="شنوة رأيكم تكتشفوا "+p+"؟";
+   if(style==="strong") hook="🔥 "+p+" يستحق اهتمامكم!";
+  }
+
+  let caption="";
+
+  if(l==="ar"){
+   caption=hook+"\n\n"+t.intro+" "+p+"!\n\n"+
+   f+"\n\n"+
+   (audience?"موجّه إلى: "+audience+"\n\n":"")+
+   (price?"السعر: "+price+"\n\n":"")+
+   t.cta;
+  }
+
+  if(l==="fr"){
+   caption=hook+"\n\n"+t.intro+" "+p+" !\n\n"+
+   f+"\n\n"+
+   (audience?"Public cible : "+audience+"\n\n":"")+
+   (price?"Prix : "+price+"\n\n":"")+
+   t.cta;
+  }
+
+  if(l==="en"){
+   caption=hook+"\n\n"+t.intro+" "+p+"!\n\n"+
+   f+"\n\n"+
+   (audience?"Target audience: "+audience+"\n\n":"")+
+   (price?"Price: "+price+"\n\n":"")+
+   t.cta;
+  }
+
+  let script="";
+
+  if(l==="ar"){
+   script="🎬 المشهد الأول – Hook\n"+hook+
+   "\n\n🎬 المشهد الثاني – تقديم المنتج\n"+
+   "نقدملكم "+p+".\n\n"+
+   "🎬 المشهد الثالث – المميزات\n"+f+
+   "\n\n🎬 المشهد الرابع – الدعوة للتفاعل\n"+t.cta;
+  }else{
+   script="🎬 HOOK\n"+hook+
+   "\n\n🎬 PRODUCT INTRODUCTION\n"+p+
+   "\n\n🎬 BENEFITS\n"+f+
+   "\n\n🎬 CALL TO ACTION\n"+t.cta;
+  }
+
+  if(type==="awareness"){
+   caption=hook+"\n\n"+p+"\n\n"+f+"\n\n"+t.cta;
+  }
+
+  if(type==="launch"){
+   caption="🚀 "+t.intro+" "+p+" !\n\n"+
+   f+"\n\n"+(price?price+"\n\n":"")+t.cta;
+  }
+
+  let hashtags=l==="ar"?
+   "#منتجات #تسوق #جودة #اكتشف_منتجنا":
+   l==="fr"?
+   "#Produit #Shopping #Qualite #Decouverte":
+   "#Product #Shopping #Quality #Discover";
+
+  let textOutput=
+   "PLATFORM: "+platform+
+   "\n\n"+t.hook+"\n"+hook+
+   "\n\n"+t.caption+"\n"+caption+
+   "\n\n"+t.script+"\n"+script+
+   "\n\n"+t.hashtags+"\n"+hashtags;
+
+  const card=document.createElement("div");
+  card.className="result-card";
+
+  const heading=document.createElement("h3");
+  heading.textContent="📱 "+platform;
+
+  const content=document.createElement("div");
+  content.className="result-text";
+  content.textContent=
+   "🎯 "+hook+"\n\n"+t.caption+"\n"+caption+
+   "\n\n"+t.script+"\n"+script+
+   "\n\n"+t.hashtags+"\n"+hashtags;
+
+  const copy=document.createElement("button");
+  copy.className="small-btn secondary";
+  copy.textContent="📋 "+t.copy;
+  copy.onclick=()=>copyText(content.textContent);
+
+  card.appendChild(heading);
+  card.appendChild(content);
+  card.appendChild(copy);
+  results.appendChild(card);
+
+ });
+
+ document.getElementById("copyAll").classList.remove("hidden");
 }
 
-if(l==="fr"){
-headline=t.discover+" "+p;
-content="✨ "+headline+"\n\n"+f;
-if(audience)content+="\n\n"+t.audience+": "+audience;
-if(price)content+="\n\n"+t.price+": "+price;
-
-if(platform==="Facebook"){
-content+="\n\n"+tone+"\n\n"+t.order+"\n\n"+t.contact;
-}
-if(platform==="Instagram"){
-content+="\n\n"+tone+"\n\n"+t.contact+"\n\n#shopping #produit #qualite";
-}
-if(platform==="TikTok"){
-content="👀 "+headline+"\n\n"+f+(audience?"\n\n"+t.audience+": "+audience:"")+(price?"\n\n"+t.price+": "+price:"")+"\n\n"+tone+"\n\n"+t.order;
-}
+function copyText(text){
+ if(navigator.clipboard && window.isSecureContext){
+  navigator.clipboard.writeText(text)
+  .then(()=>alert("Copied successfully!"))
+  .catch(()=>fallbackCopy(text));
+ }else{
+  fallbackCopy(text);
+ }
 }
 
-if(l==="en"){
-headline=t.discover+" "+p;
-content="✨ "+headline+"\n\n"+f;
-if(audience)content+="\n\n"+t.audience+": "+audience;
-if(price)content+="\n\n"+t.price+": "+price;
-
-if(platform==="Facebook"){
-content+="\n\n"+tone+"\n\n"+t.order+"\n\n"+t.contact;
-}
-if(platform==="Instagram"){
-content+="\n\n"+tone+"\n\n"+t.contact+"\n\n#shopping #product #quality";
-}
-if(platform==="TikTok"){
-content="👀 "+headline+"\n\n"+f+(audience?"\n\n"+t.audience+": "+audience:"")+(price?"\n\n"+t.price+": "+price:"")+"\n\n"+tone+"\n\n"+t.order;
-}
+function fallbackCopy(text){
+ const area=document.createElement("textarea");
+ area.value=text;
+ document.body.appendChild(area);
+ area.select();
+ document.execCommand("copy");
+ area.remove();
+ alert("Copied!");
 }
 
-return "━━━━━━━━━━━━━━━━\n"+platform+"\n━━━━━━━━━━━━━━━━\n\n"+content;
-}
-
-const result=platforms.map(makeAd).join("\n\n");
-document.getElementById("result").textContent=result;
-document.getElementById("result").style.display="block";
-document.getElementById("copy").style.display="block";
-}
-
-function copyText(){
-const text=document.getElementById("result").textContent;
-const l=document.getElementById("lang").value;
-const t=T[l];
-
-if(navigator.clipboard && window.isSecureContext){
-navigator.clipboard.writeText(text)
-.then(()=>alert(t.success))
-.catch(()=>fallbackCopy(text,t));
-}else{
-fallbackCopy(text,t);
-}
-}
-
-function fallbackCopy(text,t){
-const area=document.createElement("textarea");
-area.value=text;
-document.body.appendChild(area);
-area.select();
-try{
-document.execCommand("copy");
-alert(t.success);
-}catch(e){
-alert(t.error);
-}
-area.remove();
+function copyAll(){
+ const cards=document.querySelectorAll(".result-card .result-text");
+ const all=[...cards].map(x=>x.textContent).join("\n\n----------------\n\n");
+ copyText(all);
 }
 
 </script>
